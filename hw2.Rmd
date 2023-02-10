@@ -1,0 +1,98 @@
+---
+title: "Homework 2"
+author: "Yuxuan Chen"
+date: "2/10/2023"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1.A proposed two stage design in an oncology clinical trial will be using response to treatment as its endpoint. It is a binomial random variable. You plan to enroll 14 patients in the first stage of a Phase II clinical trial (i.e. n1=14). This design is based on the precision of the confidence interval of the response rate.  
+
+#### a.	The standard error formula is below.  If N=n1+n2 then what is the formula for n2?
+
+\
+
+
+Let $\sigma$ denote the standard error.
+$\sigma = \sqrt{\frac{p(1-p)}{n_1+n_2}}$. 
+Thus, $n_2=\frac{p(1-p)}{\sigma^2}-n_1$
+
+#### b.	Calculate n2 assuming a standard error of 0.05 and 0.1. Let p=0.5
+\
+
+
+```{r}
+n1 = 14
+p = 0.5
+sigma = c(0.05, 0.1)
+n2 = p*(1-p)/sigma^2 - n1
+n2
+```
+
+
+
+#### c.	Comment on the size of the second stage (i.e n2) for the two different standard error estimates. 
+
+\
+
+For standard error of 0.05, the sample size needed for the second stage is much larger than standard error of 0.1.
+
+
+#### d.	Consider another study.  You will enroll 14 patients in the first stage (i.e. n1).  You will only continue to the second stage if you get $\geq$ 1 response. What is the probability of stopping early assuming a probability of 20% response rate? 
+
+$$\text{Pr(stop early) = Pr(all 14 patients did not respond) = }(1-p)^{14} = 0.8^{14}=0.044$$
+
+#### e.	Now, select two different true response rates >20% and calculate the probability of stopping early.
+
+\
+
+With $p_1 = 0.4$,
+
+$$\text{Pr(stop early) = Pr(all 14 patients did not respond) = }(1-p_1)^{14} = 0.6^{14}=0.00078$$
+
+With $p_2 = 0.6$,
+
+$$\text{Pr(stop early) = Pr(all 14 patients did not respond) = }(1-p_2)^{14} = 0.4^{14}=2.68\times10^{-6}$$
+
+#### f.	Comment on the probability of stopping early when the response rate is bad (around 20%) and when the response rate is good (>20%). Does it seem like a reasonable design? Would you be able to justify this design? Are these probabilities what you would like to see if the drug has low activity (ie bad response rate) or high activity (ie. good response rate)?
+\
+
+When the response rate is bad (around 20%), such design is reasonable because the probability of stopping early is acceptable. However, with a good response rate, such design would be unnecessary because the probability of stopping early is very low.
+
+
+#### g.	If you are studying a poor drug with a true response probability of 5%, what is the chance of obtaining at least one response in the first 14 patients? 
+
+\
+
+$\text{Pr(at least one response) = 1 - Pr(stop early) = }1-(1-p)^{14} = 1-0.95^{14}=0.51$
+
+The chance of obtaining at least one response in the first 14 patients is 0.51.
+
+
+
+#### h.	What if the true response was 10%, then what is the chance of moving to the second stage of enrollment? What if the true response was 15%, then what is the chance of moving to the second stage of enrollment? 
+
+
+
+\
+$p_1=0.1$
+
+$\text{Pr(at least one response) = 1 - Pr(stop early) = }1-(1-p_1)^{14} = 1-0.9^{14}=0.77$
+
+$p_2=0.15$
+
+$\text{Pr(at least one response) = 1 - Pr(stop early) = }1-(1-p_2)^{14} = 1-0.85^{14}=0.90$
+
+#### i.	Comment on whether the probability of NOT stopping in stage 1 is low or high when the response rate is low. 
+
+\
+
+With the response rate low, the probability of not stopping is lower.
+When the response rate is 15%, the probability of not stopping in stage 1 is so high that such design seems unnecessary.
+
+
