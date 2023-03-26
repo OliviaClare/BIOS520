@@ -1,0 +1,42 @@
+---
+title: "Homework 4"
+author: "Yuxuan Chen"
+date: "2/24/2023"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1.Consider the Physicians Health Study, where subjects were randomized either to aspirin or placebo. Assume equal allocation.
+
+Simple randomization. Using the seed 938134 in the SAS code on slide #33 (entitled ‘How to perform a simple randomization’) in the lecture 5 slide deck and starting with the first line in the output, determine the treatment allocation of the first eight recruited subjects (who have given consent and satisfied eligibility criteria). Mark X to specify the treatment group for each subject. 
+Asp stands for ‘aspirin’; Pla stands for ‘placebo.’ 
+
+
+```{r}
+set.seed(938134)
+randnum <- ceiling(runif(100, 0, 9))
+randnum[randnum<=6]
+```
+
+```{r}
+set.seed(3374)
+randnum <- ceiling(runif(100, 0, 9))
+randnum[randnum<=2]
+
+set.seed(4875)
+randnum <- ceiling(runif(100, 0, 9))
+randnum[randnum<=2]
+
+set.seed(1389)
+randnum <- ceiling(runif(100, 0, 9))
+randnum[randnum<=2]
+
+set.seed(2973)
+randnum <- ceiling(runif(100, 0, 9))
+randnum[randnum<=2]
+```
+
+
